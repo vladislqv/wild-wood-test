@@ -4,6 +4,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Удаляем существующие записи
+  await prisma.orderItem.deleteMany();
   await prisma.order.deleteMany();
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
