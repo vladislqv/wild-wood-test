@@ -1,7 +1,7 @@
 import { useCartStore } from "@/store/cart";
 import { Category, FoodItem } from "@/types";
 import { motion } from "framer-motion";
-import { Bean, Coffee, Egg, IceCream, Leaf, Milk, Nut, Soup, Star, Utensils, Wheat } from "lucide-react";
+import { Bean, Egg, Leaf, Milk, Nut, Utensils, Wheat } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Cart } from "./cart";

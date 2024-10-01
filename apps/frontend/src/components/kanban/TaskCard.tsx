@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import type { UniqueIdentifier } from "@dnd-kit/core";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -113,10 +113,7 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
       <CardHeader className="p-4 flex flex-row items-center justify-between border-b border-border">
         <CardTitle className="text-lg font-semibold">Order #{id}</CardTitle>
         <div className="flex items-center space-x-2">
-          <Badge
-            variant={status === 'Preparing' ? "default" : status === 'Ready' ? "success" : "secondary"}
-            className="text-xs"
-          >
+          <Badge className='text-xs' variant={status === 'Preparing' ? "outline" : status === 'Ready' ? "default" : 'secondary'}>
             {status}
           </Badge>
           <Button
