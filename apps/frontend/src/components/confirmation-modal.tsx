@@ -1,10 +1,28 @@
 import { useAppStore } from "@/store/appStore";
 import { getTotalPrice, useCartStore } from "@/store/cart";
-import { useOrderStore } from "@/store/ordersStore";
-import { Order } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import useSWRMutation from 'swr/mutation';
+
+interface CreateOrderDto {
+    items: {
+        productId: number;
+        quantity: number;
+    }[];
+    total: number;
+    comment: string;
+}
+
+const fetcher = async (url: string, { arg }: { arg: CreateOrderDto }) => {
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(arg),
+    });
+};
 
 export default function ConfirmationModal() {
     const { t } = useTranslation();
@@ -14,28 +32,36 @@ export default function ConfirmationModal() {
     const orderComment = useAppStore((state) => state.orderComment);
     const setOrderComment = useAppStore((state) => state.setOrderComment);
 
-    const orders = useOrderStore((state) => state.orders);
-    const addOrder = useOrderStore((state) => state.addOrder);
-
     const setCartItems = useCartStore((state) => state.setCartItems);
 
     const navigate = useNavigate();
 
-    const confirmOrder = (): void => {
-        const newOrder: Order = {
-            id: orders.length + 1,
-            items: cartItems.map(item => `${item.name} x${item.quantity}`),
-            total: getTotalPrice(),
-            status: 'Accepted',
-            estimatedTime: 20,
-            comment: orderComment,
-        };
-        addOrder(newOrder);
-        setCartItems([]);
-        setShowConfirmation(false);
-        setOrderComment('');
-        
-        navigate('/orders');
+    const { trigger, isMutating, error } = useSWRMutation(
+        'http://localhost:3000/orders',
+        fetcher,
+    );
+
+    const confirmOrder = async (): Promise<void> => {
+        try {
+            const orderData: CreateOrderDto = {
+                items: cartItems.map((item) => ({
+                    productId: item.id,
+                    quantity: item.quantity,
+                })),
+                total: getTotalPrice(),
+                comment: orderComment,
+            };
+
+            await trigger(orderData);
+
+            setCartItems([]);
+            setShowConfirmation(false);
+            setOrderComment('');
+
+            navigate('/orders');
+        } catch (error) {
+            console.error('Ошибка при создании заказа:', error);
+        }
     };
 
     return (
@@ -54,7 +80,7 @@ export default function ConfirmationModal() {
                         className="bg-white p-8 rounded-lg max-w-md w-full"
                     >
                         <h3 className="text-2xl font-bold mb-4 text-green-800">{t('confirmOrder')}</h3>
-                        <p className="mb-4 text-gray-700">{t('total')}: ${getTotalPrice().toFixed(2)}</p>
+                        <p className="mb-4 text-gray-700">{t('total')}: €{getTotalPrice().toFixed(2)}</p>
                         <p className="mb-2 text-gray-700">{t('items')}:</p>
                         <ul className="list-disc list-inside mb-6 text-gray-700">
                             {cartItems.map(item => (
@@ -87,10 +113,14 @@ export default function ConfirmationModal() {
                             <button
                                 className="px-4 py-2 bg-green-800 text-white rounded-md hover:bg-green-700 transition duration-300"
                                 onClick={confirmOrder}
+                                disabled={isMutating}
                             >
-                                {t('confirm')}
+                                {isMutating ? t('processing') : t('confirm')}
                             </button>
                         </div>
+                        {error && (
+                            <p className="text-red-500 mt-4">{t('orderError')}</p>
+                        )}
                     </motion.div>
                 </motion.div>
             )}

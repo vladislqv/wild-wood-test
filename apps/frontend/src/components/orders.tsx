@@ -1,24 +1,56 @@
-import { useOrderStore } from "@/store/ordersStore";
+import { Order } from "@/types";
 import { motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-
+import useSWR from 'swr';
 
 export default function Orders() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const locale = i18n.language;
 
-    const orders = useOrderStore((state) => state.orders);
-    const setOrders = useOrderStore((state) => state.setOrders);
+    const fetcher = (url: string) => fetch(url).then(res => res.json());
+
+    const { data: ordersData, error, isLoading } = useSWR(`http://localhost:3000/orders/${locale}`, fetcher, {
+        refreshInterval: 5000, // обновление каждые 5 секунд
+    });
+
+    const mapOrders = (ordersFromBackend: any[]): Order[] => {
+        return ordersFromBackend.map(order => ({
+            id: order.id,
+            items: order.items.map((item: any) => `${item.name} x${item.quantity}`),
+            total: order.total,
+            status: order.status,
+            estimatedTime: order.estimatedTime,
+            comment: order.comment,
+        }));
+    };
+
+    // Преобразуем данные и мемоизируем результат
+    const orders = useMemo(() => {
+        return ordersData ? mapOrders(ordersData) : [];
+    }, [ordersData]);
+
+    // Локальное состояние для сортировки
+    const [sortedOrders, setSortedOrders] = useState<Order[]>([]);
+
+    // Обновляем sortedOrders при изменении orders
+    useEffect(() => {
+        setSortedOrders(orders);
+    }, [orders]);
 
     const sortOrders = (criteria: 'date' | 'status'): void => {
-        const sortedOrders = [...orders];
+        const sorted = [...sortedOrders];
         if (criteria === 'date') {
-            sortedOrders.sort((a, b) => b.id - a.id);
+            sorted.sort((a, b) => b.id - a.id);
         } else if (criteria === 'status') {
             const statusOrder: { [key: string]: number } = { 'Accepted': 0, 'Preparing': 1, 'Ready': 2 };
-            sortedOrders.sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
+            sorted.sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
         }
-        setOrders(sortedOrders);
+        setSortedOrders(sorted);
     };
+
+    if (isLoading) return <p>{t('loading')}</p>;
+    if (error) return <p>{t('errorLoadingOrders')}</p>;
 
     return (
         <div>
@@ -32,28 +64,28 @@ export default function Orders() {
                 </button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {orders.map(order => (
+                {sortedOrders.map(order => (
                     <motion.div
                         key={order.id}
                         className="bg-white bg-opacity-90 rounded-lg shadow-md p-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                     >
-                        <div className="font-bold text-xl mb-2 text-green-800">Order #{order.id}</div>
+                        <div className="font-bold text-xl mb-2 text-green-800">{t('order')} #{order.id}</div>
                         <div className="text-gray-700 mb-2">{t('items')}: {order.items.join(', ')}</div>
-                        <div className="text-gray-700 mb-4">{t('total')}: ${order.total.toFixed(2)}</div>
+                        <div className="text-gray-700 mb-4">{t('total')}: €{order.total.toFixed(2)}</div>
                         <div className="mb-2">
                             {t('status')}:
                             <span className={`ml-2 px-3 py-1 rounded-full text-white ${order.status === 'Accepted' ? 'bg-yellow-500' :
                                 order.status === 'Preparing' ? 'bg-blue-500' :
                                     'bg-green-500'
                                 }`}>
-                                {order.status}
+                                {t(order.status.toLowerCase())}
                             </span>
                         </div>
-                        {order.status === 'Preparing' && (
+                        {order.status === 'Preparing' && order.estimatedTime && (
                             <div className="text-gray-700">
-                                {t('estimatedTime')}: {order.estimatedTime} minutes
+                                {t('estimatedTime')}: {order.estimatedTime} {t('minutes')}
                             </div>
                         )}
                         {order.comment && (

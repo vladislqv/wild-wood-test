@@ -17,11 +17,13 @@ export interface CartItem extends FoodItem {
     quantity: number;
 }
 
+export type OrderStatus = 'Accepted' | 'Preparing' | 'Ready';
+
 export interface Order {
     id: number;
-    items: string[];
+    items: CartItem[];
     total: number;
-    status: 'Accepted' | 'Preparing' | 'Ready';
+    status: OrderStatus;
     estimatedTime?: number;
     comment: string;
 }
@@ -29,4 +31,21 @@ export interface Order {
 export interface Category {
     name: string;
     icon: React.ElementType;
+}
+
+export interface GetOrdersReturnType {
+    id: number;
+    items: {
+        name: string;
+        description: string;
+        category: {
+            name: string;
+        };
+        quantity: number;
+    }[];
+    total: number;
+    status: OrderStatus;
+    estimatedTime?: number;
+    comment: string;
+    createdAt: Date;
 }

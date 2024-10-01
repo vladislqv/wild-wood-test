@@ -10,6 +10,7 @@ import './i18n.ts';
 import Menu from './components/menu.tsx';
 import RootLayout from './components/root-layout.tsx';
 import Orders from './components/orders.tsx';
+import { KanbanBoard } from './components/kanban/KanbanBoard.tsx';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: '/orders',
         element: <Orders />,
+      },
+      {
+        path: 'chef',
+        element: <KanbanBoard />
       }
     ]
   },

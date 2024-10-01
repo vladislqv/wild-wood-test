@@ -15,37 +15,45 @@ enum OrderStatus {
 
 model Category {
   id       Int       @id @default(autoincrement())
-  name     String
+  name_en  String
+  name_de  String
   products Product[]
 }
 
 model Product {
-  id             Int      @id @default(autoincrement())
-  name           String
+  id             Int          @id @default(autoincrement())
   name_en        String
   name_de        String
   price          Float
-  description    String
   description_en String
   description_de String
   cookTime       String
   allergens      String[]
-  isSpecial      Boolean  @default(false)
-  isPopular      Boolean  @default(false)
+  isSpecial      Boolean      @default(false)
+  isPopular      Boolean      @default(false)
   ingredients    String[]
   image          String
   categoryId     Int
-  category       Category @relation(fields: [categoryId], references: [id])
-  orders         Order[]  @relation("ProductOrders")
+  category       Category     @relation(fields: [categoryId], references: [id])
+  orderItems     OrderItem[]
 }
 
 model Order {
-  id            Int         @id @default(autoincrement())
+  id            Int          @id @default(autoincrement())
   total         Float
   status        OrderStatus
   estimatedTime Int?
   comment       String
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  products      Product[]   @relation("ProductOrders")
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  items         OrderItem[]
+}
+
+model OrderItem {
+  id        Int      @id @default(autoincrement())
+  order     Order    @relation(fields: [orderId], references: [id])
+  orderId   Int
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  quantity  Int
 }
