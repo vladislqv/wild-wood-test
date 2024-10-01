@@ -1,5 +1,6 @@
 import { useAppStore } from "@/store/appStore";
 import { getTotalPrice, useCartStore } from "@/store/cart";
+import { BACKEND_URL } from "@/utils/env";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +38,7 @@ export default function ConfirmationModal() {
     const navigate = useNavigate();
 
     const { trigger, isMutating, error } = useSWRMutation(
-        'http://localhost:3000/orders',
+        `${BACKEND_URL}/orders`,
         fetcher,
     );
 

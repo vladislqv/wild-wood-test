@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Cart } from "./cart";
 import useSWR from "swr";
+import { BACKEND_URL } from "@/utils/env";
 
 const AllergenIcon = ({ type }: { type: string }) => {
     const iconStyle = "w-6 h-6 text-white bg-green-800 rounded-full p-1";
@@ -32,7 +33,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function Menu() {
     const locale = useTranslation().i18n.language;
-    const { data, error, isLoading } = useSWR<(FoodItem & { category: { name: string } })[]>(`http://localhost:3000/products/${locale}`, fetcher);
+    const { data, error, isLoading } = useSWR<(FoodItem & { category: { name: string } })[]>(`${BACKEND_URL}/products/${locale}`, fetcher);
 
     const addToCart = useCartStore((state) => state.addToCart);
 
