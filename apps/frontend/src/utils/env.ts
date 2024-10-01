@@ -1,1 +1,1 @@
-export const BACKEND_URL = "http://94.103.11.134:3000"
+export const BACKEND_URL = import.meta.env.VITE_BACKEND_URL!;
