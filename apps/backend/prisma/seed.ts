@@ -88,7 +88,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Sourdough bread', 'homemade guacamole', 'tasty tomatoes', 'herbs'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Bravocado.webp',
         categoryId: stullenCategory.id,
       },
       {
@@ -102,7 +102,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Sourdough bread', 'homemade red beet hummus'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/But-first-Hummus.webp',
         categoryId: stullenCategory.id,
       },
       {
@@ -116,7 +116,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Fig', 'seasonal fruits'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Cream-Cheese.webp',
         categoryId: stullenCategory.id,
       },
       {
@@ -130,7 +130,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['smashed avocado', 'cream cheese', 'egg'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Bagelicious.webp',
         categoryId: stullenCategory.id,
       },
       {
@@ -144,7 +144,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['scrambled eggs', 'tomatoes', 'fresh herbs'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/EGGcited.webp',
         categoryId: stullenCategory.id,
       },
 
@@ -160,7 +160,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['bananas', 'flour', 'sugar', 'eggs'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Banana-bread.webp',
         categoryId: sweeterThanHoneyCategory.id,
       },
       {
@@ -174,7 +174,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: [],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Cake-Dreams.webp',
         categoryId: sweeterThanHoneyCategory.id,
       },
 
@@ -190,7 +190,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Acai', 'banana', 'berries'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Acai-Dream.webp',
         categoryId: allDayBreakfastCategory.id,
       },
       {
@@ -204,7 +204,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Mango', 'banana', 'berries'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Mango-Wild.webp',
         categoryId: allDayBreakfastCategory.id,
       },
       {
@@ -218,7 +218,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Coconut', 'banana'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Hokus-Kokus.webp',
         categoryId: allDayBreakfastCategory.id,
       },
       {
@@ -232,7 +232,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Dragon fruit', 'cauliflower', 'banana', 'coconut', 'almonds'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Blue-Wild-Bowl.webp',
         categoryId: allDayBreakfastCategory.id,
       },
       {
@@ -246,7 +246,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['big pancake', 'vanilla quark', 'blueberry jelly', 'berries', 'banana', 'peanut butter'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Pancake-Pan.webp',
         categoryId: allDayBreakfastCategory.id,
       },
       {
@@ -260,7 +260,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['3 Pancakes', 'banana', 'berries', 'maple syrup', 'chocolate sauce'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Pancakes.webp',
         categoryId: allDayBreakfastCategory.id,
       },
       {
@@ -274,7 +274,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['3 Pancakes', 'berries', 'banana', 'seasonal fruits', 'Nutella'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Woodtella-Pancakes.webp',
         categoryId: allDayBreakfastCategory.id,
       },
       {
@@ -288,7 +288,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['dried dates', 'plums', 'apples', 'cinnamon', 'coconut flakes', 'peanut butter'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Homemade-Bio-Porridge.webp',
         categoryId: allDayBreakfastCategory.id,
       },
       {
@@ -302,7 +302,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Greek yoghurt', 'homemade granola', 'honey', 'berries'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Wild-Granola.webp',
         categoryId: allDayBreakfastCategory.id,
       },
 
@@ -318,7 +318,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Quinoa', 'baby spinach', 'beans', 'chickpeas', 'avocado cream', 'tomatoes', 'beetroot', 'olives', 'coconut lime pomegranate dressing'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Wild-Quinoa-Bowl.webp',
         categoryId: wilfLunchCategory.id,
       },
       {
@@ -332,7 +332,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Burrata', 'salad', 'walnut', 'tomatoes', 'berries', 'fig', 'seasonal fruit'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Wild-Salad.webp',
         categoryId: wilfLunchCategory.id,
       },
       {
@@ -346,7 +346,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Burrata', 'grilled tomatoes', 'fresh herbs', 'Italian oil'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Burrata-Sourdough-Bread.webp',
         categoryId: wilfLunchCategory.id,
       },
       {
@@ -360,7 +360,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['baby spinach', 'walnut', 'beetroot', 'sheep cheese', 'apple', 'quinoa'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Wild-in-your-Hood-Salad.webp',
         categoryId: wilfLunchCategory.id,
       },
       {
@@ -374,7 +374,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['2 pita', 'beetroot hummus', 'avocado', 'scrambled egg', 'sheep cheese'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Wild-Mykonos-Pita.webp',
         categoryId: wilfLunchCategory.id,
       },
 
@@ -390,7 +390,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['espresso'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Espresso.webp',
         categoryId: coffeeHotDrinksCategory.id,
       },
       {
@@ -404,7 +404,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['double espresso'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Doppio.webp',
         categoryId: coffeeHotDrinksCategory.id,
       },
       {
@@ -418,7 +418,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['espresso', 'hot water'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Americano.webp',
         categoryId: coffeeHotDrinksCategory.id,
       },
       {
@@ -432,7 +432,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['espresso', 'steamed milk', 'milk foam'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Cappuccino.webp',
         categoryId: coffeeHotDrinksCategory.id,
       },
       {
@@ -446,7 +446,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['espresso', 'steamed milk'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Flat-White.webp',
         categoryId: coffeeHotDrinksCategory.id,
       },
       {
@@ -460,7 +460,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['espresso', 'steamed milk'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Latte.webp',
         categoryId: coffeeHotDrinksCategory.id,
       },
       {
@@ -474,7 +474,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['cocoa', 'milk', 'sugar'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Hot-Chocolate.webp',
         categoryId: coffeeHotDrinksCategory.id,
       },
       {
@@ -488,7 +488,7 @@ async function main() {
         isSpecial: true,
         isPopular: false,
         ingredients: ['espresso', 'steamed milk', 'special syrup'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Special-Latte.webp',
         categoryId: coffeeHotDrinksCategory.id,
       },
       {
@@ -502,7 +502,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['oat milk', 'almond milk', 'coconut milk'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Plant-Milk.webp',
         categoryId: coffeeHotDrinksCategory.id,
       },
       {
@@ -516,7 +516,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['tea'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Pot-of-Tea.webp',
         categoryId: coffeeHotDrinksCategory.id,
       },
 
@@ -532,7 +532,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['espresso', 'cold milk', 'ice'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Iced-Cappuccino.webp',
         categoryId: icedDrinksCategory.id,
       },
       {
@@ -546,7 +546,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['espresso', 'cold milk', 'ice'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Iced-Flat-White.webp',
         categoryId: icedDrinksCategory.id,
       },
       {
@@ -560,7 +560,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['matcha', 'cold milk', 'ice'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Iced-Matcha.webp',
         categoryId: icedDrinksCategory.id,
       },
 
@@ -576,7 +576,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['water'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Water-Taunusquelle.webp',
         categoryId: softdrinksCategory.id,
       },
       {
@@ -590,7 +590,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['water'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Water-Taunusquelle.webp',
         categoryId: softdrinksCategory.id,
       },
       {
@@ -604,7 +604,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['cola'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Fritz-kola.webp',
         categoryId: softdrinksCategory.id,
       },
       {
@@ -618,7 +618,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['lemonade'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Fritz-limo.webp',
         categoryId: softdrinksCategory.id,
       },
       {
@@ -632,7 +632,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['spritz'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Fritz-spritz.webp',
         categoryId: softdrinksCategory.id,
       },
       {
@@ -646,7 +646,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['mint', 'passion fruit'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Mintspritzer.webp',
         categoryId: softdrinksCategory.id,
       },
       {
@@ -660,7 +660,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['mint', 'rhubarb'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Mintspritzer.webp',
         categoryId: softdrinksCategory.id,
       },
       {
@@ -674,7 +674,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['fresh orange juice'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Fresh-orange-juice.webp',
         categoryId: softdrinksCategory.id,
       },
       {
@@ -688,7 +688,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Elephant Bay drink'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Elephant-Bay.webp',
         categoryId: softdrinksCategory.id,
       },
 
@@ -704,7 +704,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Chateau de Miraval wine'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Chateau-de-Miraval.webp',
         categoryId: wildWinesMoreCategory.id,
       },
       {
@@ -718,7 +718,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Grauburgunder wine'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Grauburgunder.webp',
         categoryId: wildWinesMoreCategory.id,
       },
       {
@@ -732,7 +732,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Grauburgunder wine'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Grauburgunder.webp',
         categoryId: wildWinesMoreCategory.id,
       },
       {
@@ -746,7 +746,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Riesling wine'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Riesling.webp',
         categoryId: wildWinesMoreCategory.id,
       },
       {
@@ -760,7 +760,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Riesling wine'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Riesling.webp',
         categoryId: wildWinesMoreCategory.id,
       },
       {
@@ -774,7 +774,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Rosé wine'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Rose.webp',
         categoryId: wildWinesMoreCategory.id,
       },
       {
@@ -788,7 +788,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Rosé wine'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Rose.webp',
         categoryId: wildWinesMoreCategory.id,
       },
       {
@@ -802,7 +802,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Aperol', 'Prosecco', 'soda water'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: 'Aperol-Spritz-Lillet-Wild-Berry.webp',
         categoryId: wildWinesMoreCategory.id,
       },
       {
@@ -816,7 +816,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Lillet', 'wild berry syrup', 'soda water'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: 'Aperol-Spritz-Lillet-Wild-Berry.webp',
         categoryId: wildWinesMoreCategory.id,
       },
 
@@ -832,7 +832,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Strawberry', 'blueberry', 'black currant', 'blackberry', 'açaí', 'banana', 'hemp protein'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Wild-Berry-Thing.webp',
         categoryId: smoothiesCategory.id,
       },
       {
@@ -846,7 +846,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Spinach', 'broccoli', 'avocado', 'barley grass', 'wheat grass', 'spirulina', 'coconut milk'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Green-Crow.webp',
         categoryId: smoothiesCategory.id,
       },
       {
@@ -860,7 +860,7 @@ async function main() {
         isSpecial: false,
         isPopular: false,
         ingredients: ['Mango', 'pineapple', 'passion fruit', 'acerola', 'almond milk', 'coconut oil'],
-        image: '/placeholder.svg?height=200&width=300',
+        image: '/Mango-Wild..webp',
         categoryId: smoothiesCategory.id,
       },
     ],
