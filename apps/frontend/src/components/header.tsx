@@ -4,7 +4,6 @@ import { useState } from "react";
 import i18n from "i18next";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "./ui/button";
 
 export function Header() {
     const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
