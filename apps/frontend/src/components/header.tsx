@@ -4,6 +4,7 @@ import { useState } from "react";
 import i18n from "i18next";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
+import { Button } from "./ui/button";
 
 export function Header() {
     const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
@@ -31,8 +32,9 @@ export function Header() {
                             </Link>
                         </div>
                         <div className="hidden lg:flex items-center space-x-4">
-                            <a href="#" className="text-white hover:text-gray-200 transition duration-300">{t('menu')}</a>
-                            <a href="#" className="text-white hover:text-gray-200 transition duration-300">{t('ourLocation')}</a>
+                            {/* <a href="#" className="text-white hover:text-gray-200 transition duration-300">{t('menu')}</a> */}
+                            {/* <a href="#" className="text-white hover:text-gray-200 transition duration-300">{t('ourLocation')}</a> */}
+                            <button className="bg-white text-green-800 px-4 py-2 rounded-md hover:bg-gray-200 transition duration-300" onClick={() => navigate("/chef")}>Test kitchen</button>
                             <button
                                 className="bg-white text-green-800 px-4 py-2 rounded-md hover:bg-gray-200 transition duration-300"
                                 onClick={() => navigate('/orders')}
