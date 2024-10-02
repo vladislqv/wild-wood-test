@@ -1,4 +1,5 @@
 import { Order } from "@/types";
+import { BACKEND_URL } from "@/utils/env";
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -10,7 +11,7 @@ export default function Orders() {
 
     const fetcher = (url: string) => fetch(url).then(res => res.json());
 
-    const { data: ordersData, error, isLoading } = useSWR(`http://localhost:3000/orders/${locale}`, fetcher, {
+    const { data: ordersData, error, isLoading } = useSWR(`${BACKEND_URL}/orders/${locale}`, fetcher, {
         refreshInterval: 5000, // обновление каждые 5 секунд
     });
 

@@ -21,6 +21,7 @@ import { BoardColumn, BoardContainer } from "./BoardColumn";
 import useSWR from 'swr';
 import { GetOrdersReturnType } from "@/types"; // Импортируйте ваш интерфейс Order
 import { useTranslation } from "react-i18next";
+import { BACKEND_URL } from "@/utils/env";
 
 const defaultCols = [
   {
@@ -337,7 +338,7 @@ export function KanbanBoard() {
 
   async function updateOrderStatus(orderId: number, newStatus: OrderStatus) {
     try {
-      await fetch(`http://localhost:3000/orders/${orderId}`, {
+      await fetch(`${BACKEND_URL}/orders/${orderId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
