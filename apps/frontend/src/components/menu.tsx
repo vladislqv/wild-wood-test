@@ -34,6 +34,9 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 export default function Menu() {
     const locale = useTranslation().i18n.language;
     const { data, error, isLoading } = useSWR<(FoodItem & { category: { name: string } })[]>(`${BACKEND_URL}/products/${locale}`, fetcher);
+    console.log(data);
+    console.log(error);
+    console.log(BACKEND_URL)
 
     const addToCart = useCartStore((state) => state.addToCart);
 
