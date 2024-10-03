@@ -52,7 +52,7 @@ export function KanbanBoard() {
 
   const fetcher = (url: string) => fetch(url).then(res => res.json());
 
-  const { data: ordersData } = useSWR<GetOrdersReturnType[]>(`http://localhost:3000/orders/${locale}`, fetcher, {
+  const { data: ordersData } = useSWR<GetOrdersReturnType[]>(`${BACKEND_URL}/orders/${locale}`, fetcher, {
     refreshInterval: 5000,
   });
 
