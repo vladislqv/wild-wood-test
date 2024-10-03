@@ -34,9 +34,6 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 export default function Menu() {
     const locale = useTranslation().i18n.language;
     const { data, error, isLoading } = useSWR<(FoodItem & { category: { name: string } })[]>(`${BACKEND_URL}/products/${locale}`, fetcher);
-    console.log(data);
-    console.log(error);
-    console.log(BACKEND_URL)
 
     const addToCart = useCartStore((state) => state.addToCart);
 
@@ -53,12 +50,17 @@ export default function Menu() {
                 .map((item) => item.category.name)
                 .filter((value, index, self) => self.indexOf(value) === index)
                 .map((name) => ({ name, icon: Utensils }));
-
+    
             setCategories(uniqueCategories);
-
-            // Устанавливаем первую категорию как активную
-            if (uniqueCategories.length > 0 && activeCategory === '') {
-                setActiveCategory(uniqueCategories[0].name);
+            console.log('uniqueCategories', uniqueCategories);
+    
+            // Get an array of category names
+            const categoryNames = uniqueCategories.map((category) => category.name);
+    
+            // If activeCategory is not in the new category names, reset it
+            if (!categoryNames.includes(activeCategory)) {
+                // Set to the first category if available
+                setActiveCategory(uniqueCategories[0]?.name || '');
             }
         }
     }, [data]);
@@ -69,6 +71,7 @@ export default function Menu() {
             const filtered = data.filter((item) => item.category.name === activeCategory);
             setFilteredData(filtered);
         }
+
     }, [data, activeCategory]);
 
     return (
@@ -78,11 +81,10 @@ export default function Menu() {
                     {categories.map((category) => (
                         <button
                             key={category.name}
-                            className={`flex flex-col items-center p-4 rounded-lg transition-colors ${
-                                activeCategory === category.name
+                            className={`flex flex-col items-center p-4 rounded-lg transition-colors ${activeCategory === category.name
                                     ? 'bg-white text-green-800'
                                     : 'bg-green-800 bg-opacity-50 text-white hover:bg-opacity-75'
-                            }`}
+                                }`}
                             onClick={() => {
                                 setActiveCategory(category.name);
                             }}
@@ -104,35 +106,37 @@ export default function Menu() {
                         {filteredData && filteredData.map((item) => (
                             <motion.div
                                 key={item.id}
-                                className="bg-white bg-opacity-90 rounded-lg shadow-lg overflow-hidden"
+                                className="bg-white bg-opacity-90 rounded-lg shadow-lg overflow-hidden flex flex-col h-full"
                                 whileHover={{ scale: 1.03 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <div className="p-6">
-                                    <div className="relative mb-4">
-                                        <img
-                                            src={item.image}
-                                            alt={item.name}
-                                            className="w-full h-40 object-cover rounded-md"
-                                        />
-                                        {(item.isPopular || item.isSpecial) && (
-                                            <div className="absolute top-2 right-2 bg-yellow-400 text-black px-2 py-1 rounded-full text-xs font-bold">
-                                                {item.isPopular ? t('popular') : t('chefRecommends')}
+                                <div className="p-6 flex flex-col h-full">
+                                    <div className="flex-grow">
+                                        <div className="relative mb-4">
+                                            <img
+                                                src={item.image}
+                                                alt={item.name}
+                                                className="w-full h-40 object-cover rounded-md"
+                                            />
+                                            {(item.isPopular || item.isSpecial) && (
+                                                <div className="absolute top-2 right-2 bg-yellow-400 text-black px-2 py-1 rounded-full text-xs font-bold">
+                                                    {item.isPopular ? t('popular') : t('chefRecommends')}
+                                                </div>
+                                            )}
+                                        </div>
+                                        <h3 className="text-xl font-semibold text-green-800 mb-2">{item.name}</h3>
+                                        <p className="text-gray-600 mb-4">{item.description}</p>
+                                        <div className="flex justify-between items-center mb-4">
+                                            <span className="text-green-800 font-bold text-lg">€{item.price.toFixed(2)}</span>
+                                            <div className="flex space-x-2">
+                                                {item.allergens.map((allergen, index) => (
+                                                    <AllergenIcon key={index} type={allergen} />
+                                                ))}
                                             </div>
-                                        )}
-                                    </div>
-                                    <h3 className="text-xl font-semibold text-green-800 mb-2">{item.name}</h3>
-                                    <p className="text-gray-600 mb-4">{item.description}</p>
-                                    <div className="flex justify-between items-center mb-4">
-                                        <span className="text-green-800 font-bold text-lg">€{item.price.toFixed(2)}</span>
-                                        <div className="flex space-x-2">
-                                            {item.allergens.map((allergen, index) => (
-                                                <AllergenIcon key={index} type={allergen} />
-                                            ))}
                                         </div>
                                     </div>
                                     <button
-                                        className="w-full bg-green-800 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-300"
+                                        className="w-full bg-green-800 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-300 mt-4"
                                         onClick={() => addToCart(item)}
                                     >
                                         {t('addToCart')}

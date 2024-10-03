@@ -63,7 +63,7 @@ export function Cart() {
                         className="w-full bg-white text-green-800 py-2 rounded-md hover:bg-gray-200 transition duration-300 font-bold"
                         onClick={handleMakeOrder}
                     >
-                        {t('makeOrder')}
+                        {t('placeOrder')}
                     </button>
                 </div>
             )}
