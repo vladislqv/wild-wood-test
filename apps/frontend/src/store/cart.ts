@@ -23,7 +23,7 @@ export const useCartStore = create<State & Action>((set) => ({
                 )
             };
         } else {
-            return { items: [...state.items, { ...item, quantity: 1 }] };
+            return { items: [{ ...item, quantity: 1 }, ...state.items] };
         }
     }),
     removeFromCart: (id) => set((state) => ({ items: state.items.filter((item) => item.id !== id) })),

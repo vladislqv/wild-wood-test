@@ -33,8 +33,8 @@ async function main() {
 
   const wilfLunchCategory = await prisma.category.create({
     data: {
-      name_en: 'Wilf Lunch',
-      name_de: 'Wilf Mittagessen',
+      name_en: 'Wild Lunch',
+      name_de: 'Wild Mittagessen',
     },
   });
 

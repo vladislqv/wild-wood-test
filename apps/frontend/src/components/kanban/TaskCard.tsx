@@ -5,7 +5,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cva } from "class-variance-authority";
-import { GripVertical, Clock, DollarSign } from "lucide-react";
+import { GripVertical, Clock, DollarSign, ChevronDown, ChevronUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ColumnId } from "./KanbanBoard";
 import { Separator } from "@/components/ui/separator";
@@ -58,6 +58,7 @@ const getTimeAgo = (createdAt: string): { time: string; status: 'recent' | 'warn
 
 export function TaskCard({ task, isOverlay }: TaskCardProps) {
   const [timeInfo, setTimeInfo] = useState(getTimeAgo(task.content.createdAt));
+  const [showAllItems, setShowAllItems] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -102,6 +103,10 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
 
   const { id, items, total, status } = task.content;
 
+  const toggleShowAllItems = () => {
+    setShowAllItems(!showAllItems);
+  };
+
   return (
     <Card
       ref={setNodeRef}
@@ -131,14 +136,29 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
         <div>
           <h4 className="text-sm font-medium text-muted-foreground mb-1">Positions:</h4>
           <ul className="list-disc list-inside text-sm">
-            {items.slice(0, 3).map((item, index) => (
+            {(showAllItems ? items : items.slice(0, 3)).map((item, index) => (
               <li key={index} className="flex justify-between items-center">
                 <span className="truncate">{item.name}</span>
                 <span className="text-muted-foreground ml-2">x{item.quantity || 1}</span>
               </li>
             ))}
-            {items.length > 3 && (
-              <li className="text-muted-foreground">...and {items.length - 3} more</li>
+            {items.length > 3 && !showAllItems && (
+              <li 
+                className="text-muted-foreground cursor-pointer flex items-center"
+                onClick={toggleShowAllItems}
+              >
+                ...and {items.length - 3} more
+                <ChevronDown className="h-4 w-4 ml-1" />
+              </li>
+            )}
+            {showAllItems && (
+              <li 
+                className="text-muted-foreground cursor-pointer flex items-center"
+                onClick={toggleShowAllItems}
+              >
+                Show less
+                <ChevronUp className="h-4 w-4 ml-1" />
+              </li>
             )}
           </ul>
         </div>
