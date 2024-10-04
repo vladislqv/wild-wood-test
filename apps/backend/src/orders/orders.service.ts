@@ -8,13 +8,14 @@ export class OrdersService {
   constructor(private prisma: PrismaService) { }
 
   async createOrder(createOrderDto: CreateOrderDto) {
-    const { items, total, comment } = createOrderDto;
+    const { items, total, comment, tableNumber } = createOrderDto;
 
     const order = await this.prisma.order.create({
       data: {
         total,
         status: 'Accepted',
         comment,
+        tableNumber,
         items: {
           create: items.map((item) => ({
             product: { connect: { id: item.productId } },
@@ -36,7 +37,30 @@ export class OrdersService {
     return order;
   }
 
-  async getOrders() {
+  async getUserOrders(tableNumber: string) {
+    return this.prisma.order.findMany({
+      where: {
+        tableNumber,
+      },
+      include: {
+        items: {
+          include: {
+            product: {
+              include: {
+                category: true,
+              }
+            },
+          },
+        },
+      }
+    })
+  }
+
+  async getOrders(tableNumber: string | undefined) {
+    if (tableNumber) {
+      return this.getUserOrders(tableNumber);
+    }
+
     return this.prisma.order.findMany({
       include: {
         items: {

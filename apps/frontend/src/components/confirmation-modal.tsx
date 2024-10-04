@@ -13,6 +13,7 @@ interface CreateOrderDto {
     }[];
     total: number;
     comment: string;
+    tableNumber: string | null;
 }
 
 const fetcher = async (url: string, { arg }: { arg: CreateOrderDto }) => {
@@ -32,6 +33,7 @@ export default function ConfirmationModal() {
     const setShowConfirmation = useAppStore((state) => state.setShowConfirmation);
     const orderComment = useAppStore((state) => state.orderComment);
     const setOrderComment = useAppStore((state) => state.setOrderComment);
+    const tableNumber = useAppStore((state) => state.tableNumber);
 
     const setCartItems = useCartStore((state) => state.setCartItems);
 
@@ -51,9 +53,10 @@ export default function ConfirmationModal() {
                 })),
                 total: getTotalPrice(),
                 comment: orderComment,
+                tableNumber,
             };
 
-            await trigger(orderData);
+            await trigger({...orderData });
 
             setCartItems([]);
             setShowConfirmation(false);

@@ -7,6 +7,7 @@ export class CreateOrderDto {
   }[];
   total: number;
   comment: string;
+  tableNumber: string;
 }
 
 export class UpdateOrderDto {

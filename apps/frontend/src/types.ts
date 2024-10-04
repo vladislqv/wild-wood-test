@@ -48,4 +48,5 @@ export interface GetOrdersReturnType {
     estimatedTime?: number;
     comment: string;
     createdAt: Date;
+    tableNumber: string;
 }

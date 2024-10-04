@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body, Param, Patch } from '@nestjs/common';
+import { Controller, Post, Get, Body, Param, Patch, Query } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto, UpdateOrderDto } from './dto/create-order.dto';
 
@@ -30,8 +30,8 @@ export class OrdersController {
 
 
     @Get(':locale')
-    async getOrders(@Param('locale') locale: string): Promise<returnOrder[]> {
-        const orders = await this.ordersService.getOrders();
+    async getOrders(@Param('locale') locale: string, @Query('tableNumber') tableNumber): Promise<returnOrder[]> {
+        const orders = await this.ordersService.getOrders(tableNumber);
 
         return orders.map((order) => ({
             id: order.id,
@@ -49,6 +49,7 @@ export class OrdersController {
             estimatedTime: order.estimatedTime,
             comment: order.comment,
             createdAt: order.createdAt,
+            tableNumber: order.tableNumber
         }));
     }
 

@@ -101,7 +101,7 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
     },
   });
 
-  const { id, items, total, status } = task.content;
+  const { id, items, total, status, tableNumber } = task.content;
 
   const toggleShowAllItems = () => {
     setShowAllItems(!showAllItems);
@@ -143,7 +143,7 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
               </li>
             ))}
             {items.length > 3 && !showAllItems && (
-              <li 
+              <li
                 className="text-muted-foreground cursor-pointer flex items-center"
                 onClick={toggleShowAllItems}
               >
@@ -152,7 +152,7 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
               </li>
             )}
             {showAllItems && (
-              <li 
+              <li
                 className="text-muted-foreground cursor-pointer flex items-center"
                 onClick={toggleShowAllItems}
               >
@@ -163,6 +163,9 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
           </ul>
         </div>
         <Separator />
+        <div>
+          <h4 className="text-sm font-medium text-muted-foreground mb-1">Table: {tableNumber}</h4>
+        </div>
         <div className="flex justify-between items-center text-sm">
           <div className="flex items-center space-x-1 text-muted-foreground">
             <Clock className="h-4 w-4" />

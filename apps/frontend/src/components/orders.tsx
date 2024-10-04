@@ -1,3 +1,4 @@
+import { useAppStore } from "@/store/appStore";
 import { Order } from "@/types";
 import { BACKEND_URL } from "@/utils/env";
 import { motion } from "framer-motion";
@@ -10,8 +11,9 @@ export default function Orders() {
     const locale = i18n.language;
 
     const fetcher = (url: string) => fetch(url).then(res => res.json());
+    const tableNumber = useAppStore((state) => state.tableNumber);
 
-    const { data: ordersData, error, isLoading } = useSWR(`${BACKEND_URL}/orders/${locale}`, fetcher, {
+    const { data: ordersData, error, isLoading } = useSWR(`${BACKEND_URL}/orders/${locale}?tableNumber=${tableNumber}`, fetcher, {
         refreshInterval: 5000, // обновление каждые 5 секунд
     });
 
