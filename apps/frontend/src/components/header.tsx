@@ -4,6 +4,9 @@ import { useState } from "react";
 import i18n from "i18next";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
+import { LogoutButtonComponent } from "./logout-button";
+import { useAppStore } from "@/store/appStore";
+import { useCartStore } from "@/store/cart";
 
 export function Header() {
     const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
@@ -13,6 +16,15 @@ export function Header() {
     const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng);
     };
+
+    const clearAppState = useAppStore((state) => state.logout);
+    const clearCart = useCartStore((state) => state.clearCart);
+
+    const onLogout = () => {
+        clearCart();
+        clearAppState();
+        navigate('/');
+    }
 
     return (
         <>
@@ -46,6 +58,7 @@ export function Header() {
                             >
                                 {i18n.language.toUpperCase()}
                             </button>
+                            <LogoutButtonComponent onLogout={onLogout} />
                         </div>
                     </div>
                 </nav>

@@ -5,7 +5,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cva } from "class-variance-authority";
-import { GripVertical, Clock, DollarSign, ChevronDown, ChevronUp } from "lucide-react";
+import { GripVertical, Clock, ChevronDown, ChevronUp, EuroIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ColumnId } from "./KanbanBoard";
 import { Separator } from "@/components/ui/separator";
@@ -169,7 +169,7 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
             <span>{timeInfo.time}</span>
           </div>
           <div className="flex items-center space-x-1 font-semibold">
-            <DollarSign className="h-4 w-4" />
+            <EuroIcon className="h-4 w-4" />
             <span>{total.toFixed(2)}</span>
           </div>
         </div>
